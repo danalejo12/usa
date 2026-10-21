@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}USA Explorer{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="contenedor">
+            <a href="{% url 'inicio' %}" class="logo">USA <span>Explorer</span></a>
+        </div>
+    </header>
+
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="contenedor">
+            <p>USA Explorer</p>
+        </div>
+    </footer>
+
+    <script>
+        // Barra de navegación sólida al bajar
+        const navbar = document.querySelector('.navbar');
+        const actualizarNavbar = () => navbar.classList.toggle('scrolled', window.scrollY > 50 || !document.querySelector('.hero'));
+        window.addEventListener('scroll', actualizarNavbar);
+        actualizarNavbar();
+
+        // Las tarjetas aparecen al hacer scroll
+        const tarjetas = document.querySelectorAll('.tarjeta');
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach((entrada) => {
+                if (entrada.isIntersecting) {
+                    entrada.target.classList.add('visible');
+                    entrada.target.addEventListener('transitionend', () => {
+                        entrada.target.style.transitionDelay = '';
+                    }, { once: true });
+                    observador.unobserve(entrada.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        tarjetas.forEach((tarjeta, i) => {
+            tarjeta.classList.add('revelar');
+            tarjeta.style.transitionDelay = `${(i % 3) * 0.12}s`;
+            observador.observe(tarjeta);
+        });
+    </script>
+
+</body>
+</html>

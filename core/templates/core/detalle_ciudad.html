@@ -1,0 +1,66 @@
+
+{% extends 'core/base.html' %}
+{% load humanize %}
+
+{% block titulo %}{{ ciudad.nombre }} | USA Explorer{% endblock %}
+
+{% block contenido %}
+
+<section class="detalle">
+    <div class="contenedor">
+
+        <a href="{% url 'inicio' %}" class="volver">
+            ← Volver a ciudades
+        </a>
+
+        <div class="detalle-contenedor">
+
+            {% if ciudad.foto %}
+                <img
+                    src="{{ ciudad.foto.url }}"
+                    alt="{{ ciudad.nombre }}"
+                    class="detalle-imagen">
+            {% else %}
+                <div class="sin-imagen detalle-imagen">
+                    <span>🏙️</span>
+                    <p>Imagen no disponible</p>
+                </div>
+            {% endif %}
+
+            <div class="detalle-info">
+
+                <span class="subtitulo">
+                    CIUDAD DE ESTADOS UNIDOS
+                </span>
+
+                <h1>{{ ciudad.nombre }}</h1>
+
+                <div class="datos-ciudad">
+                    <div class="dato">
+                        <span>Fecha de fundación</span>
+                        <strong>
+                            {{ ciudad.fecha_fundacion|date:"d/m/Y" }}
+                        </strong>
+                    </div>
+
+                    <div class="dato">
+                        <span>Población</span>
+                        <strong>
+                            {{ ciudad.poblacion|intcomma }} habitantes
+                        </strong>
+                    </div>
+                </div>
+
+                <h2>Lugares turísticos</h2>
+
+                <p class="descripcion">
+                    {{ ciudad.lugares|linebreaksbr }}
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

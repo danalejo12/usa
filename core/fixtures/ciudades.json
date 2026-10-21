@@ -1,0 +1,134 @@
+[
+{
+  "model": "core.ciudad",
+  "pk": 1,
+  "fields": {
+    "foto": "ciudades/nueva_york.jpg",
+    "nombre": "Nueva York",
+    "fecha_fundacion": "1653-02-02",
+    "poblacion": 8804190,
+    "lugares": "Estatua de la Libertad\nCentral Park\nTimes Square\nEmpire State Building\nPuente de Brooklyn"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 2,
+  "fields": {
+    "foto": "ciudades/san_francisco.jpg",
+    "nombre": "San Francisco",
+    "fecha_fundacion": "1776-06-29",
+    "poblacion": 873965,
+    "lugares": "Puente Golden Gate\nIsla de Alcatraz\nFisherman's Wharf\nBarrio Chino\nTranvías (cable cars)"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 3,
+  "fields": {
+    "foto": "ciudades/los_angeles.jpg",
+    "nombre": "Los Ángeles",
+    "fecha_fundacion": "1781-09-04",
+    "poblacion": 3898747,
+    "lugares": "Letrero de Hollywood\nPaseo de la Fama\nObservatorio Griffith\nMuelle de Santa Mónica\nMuseo Getty"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 4,
+  "fields": {
+    "foto": "ciudades/chicago.jpg",
+    "nombre": "Chicago",
+    "fecha_fundacion": "1837-03-04",
+    "poblacion": 2746388,
+    "lugares": "Millennium Park y Cloud Gate\nTorre Willis\nNavy Pier\nInstituto de Arte de Chicago\nRío Chicago"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 5,
+  "fields": {
+    "foto": "ciudades/houston.jpg",
+    "nombre": "Houston",
+    "fecha_fundacion": "1836-08-30",
+    "poblacion": 2304580,
+    "lugares": "Space Center Houston\nDistrito de Museos\nCentro Médico de Texas\nBuffalo Bayou Park\nHermann Park"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 6,
+  "fields": {
+    "foto": "ciudades/filadelfia.jpg",
+    "nombre": "Filadelfia",
+    "fecha_fundacion": "1701-10-25",
+    "poblacion": 1603797,
+    "lugares": "Independence Hall\nCampana de la Libertad\nMuseo de Arte de Filadelfia\nReading Terminal Market\nElfreth's Alley"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 7,
+  "fields": {
+    "foto": "ciudades/san_antonio.jpg",
+    "nombre": "San Antonio",
+    "fecha_fundacion": "1718-05-01",
+    "poblacion": 1434625,
+    "lugares": "El Álamo\nPaseo del Río (River Walk)\nMisiones de San Antonio\nJardín Botánico de San Antonio\nMercado Histórico"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 8,
+  "fields": {
+    "foto": "ciudades/miami.jpg",
+    "nombre": "Miami",
+    "fecha_fundacion": "1896-07-28",
+    "poblacion": 442241,
+    "lugares": "Miami Beach y South Beach\nPequeña Habana\nMuseo y Jardines Vizcaya\nWynwood Walls\nBayside Marketplace"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 9,
+  "fields": {
+    "foto": "ciudades/seattle.jpg",
+    "nombre": "Seattle",
+    "fecha_fundacion": "1851-11-13",
+    "poblacion": 737015,
+    "lugares": "Space Needle\nPike Place Market\nMuseo Chihuly Garden and Glass\nMuseo de la Cultura Pop (MoPOP)\nPioneer Square"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 10,
+  "fields": {
+    "foto": "ciudades/boston.jpg",
+    "nombre": "Boston",
+    "fecha_fundacion": "1630-09-17",
+    "poblacion": 675647,
+    "lugares": "Freedom Trail\nBoston Common\nFaneuil Hall\nBeacon Hill y Acorn Street\nFenway Park"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 11,
+  "fields": {
+    "foto": "ciudades/washington.jpg",
+    "nombre": "Washington D. C.",
+    "fecha_fundacion": "1790-07-16",
+    "poblacion": 689545,
+    "lugares": "Capitolio\nCasa Blanca\nMonumento a Washington\nMonumento a Lincoln\nMuseos Smithsonian"
+  }
+},
+{
+  "model": "core.ciudad",
+  "pk": 12,
+  "fields": {
+    "foto": "ciudades/las_vegas.jpg",
+    "nombre": "Las Vegas",
+    "fecha_fundacion": "1905-05-15",
+    "poblacion": 641903,
+    "lugares": "Las Vegas Strip\nFuentes del Bellagio\nFremont Street\nHigh Roller\nThe Sphere"
+  }
+}
+]

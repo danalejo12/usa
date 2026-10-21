@@ -1,0 +1,586 @@
+/* ==========================================================
+   USA Explorer - Estilos
+   ========================================================== */
+
+:root {
+    --azul-oscuro: #0b1d3a;
+    --azul: #1e3a8a;
+    --rojo: #dc2626;
+    --rojo-claro: #f87171;
+    --dorado: #fbbf24;
+    --fondo: #f4f6fb;
+    --blanco: #ffffff;
+    --texto: #1f2937;
+    --texto-suave: #6b7280;
+    --sombra: 0 10px 30px rgba(11, 29, 58, 0.10);
+    --sombra-fuerte: 0 25px 50px rgba(11, 29, 58, 0.25);
+    --radio: 18px;
+    --transicion: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ---------- Animaciones ---------- */
+
+@keyframes aparecer-arriba {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoom-lento {
+    from { transform: scale(1); }
+    to   { transform: scale(1.12); }
+}
+
+@keyframes rebote {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(8px); }
+}
+
+@keyframes brillo {
+    from { left: -75%; }
+    to   { left: 125%; }
+}
+
+/* ---------- Barra de navegación ---------- */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 18px 0;
+    background: rgba(11, 29, 58, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    transition: var(--transicion);
+}
+
+.navbar.scrolled {
+    padding: 12px 0;
+    background: rgba(11, 29, 58, 0.92);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--blanco);
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--rojo-claro);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: var(--blanco);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/media/ciudades/nueva_york.jpg') center / cover no-repeat;
+    animation: zoom-lento 20s ease-in-out infinite alternate;
+    z-index: -2;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(11, 29, 58, 0.92) 0%,
+        rgba(30, 58, 138, 0.65) 55%,
+        rgba(220, 38, 38, 0.45) 100%);
+    z-index: -1;
+}
+
+.hero-contenido {
+    max-width: 720px;
+}
+
+.hero-contenido > * {
+    opacity: 0;
+    animation: aparecer-arriba 0.9s ease forwards;
+}
+
+.hero-contenido > *:nth-child(1) { animation-delay: 0.2s; }
+.hero-contenido > *:nth-child(2) { animation-delay: 0.4s; }
+.hero-contenido > *:nth-child(3) { animation-delay: 0.6s; }
+.hero-contenido > *:nth-child(4) { animation-delay: 0.8s; }
+
+.etiqueta {
+    display: inline-block;
+    padding: 8px 18px;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(6px);
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    margin-bottom: 35px;
+    max-width: 560px;
+}
+
+/* Flecha animada al pie del hero */
+.hero .contenedor::after {
+    content: '⌄';
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -10px;
+    font-size: 2rem;
+    opacity: 0.8;
+    animation: rebote 1.8s ease-in-out infinite;
+}
+
+/* ---------- Botones ---------- */
+
+.boton {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding: 15px 38px;
+    font-weight: 600;
+    color: var(--blanco);
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--rojo), #b91c1c);
+    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.45);
+    transition: var(--transicion);
+}
+
+.boton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+}
+
+.boton:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 35px rgba(220, 38, 38, 0.55);
+}
+
+.boton:hover::after {
+    animation: brillo 0.8s ease;
+}
+
+/* ---------- Secciones ---------- */
+
+.seccion {
+    padding: 100px 0;
+}
+
+.encabezado-seccion {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.subtitulo {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--rojo);
+    margin-bottom: 10px;
+}
+
+.encabezado-seccion h2 {
+    position: relative;
+    display: inline-block;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--azul-oscuro);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.encabezado-seccion h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 70px;
+    height: 4px;
+    border-radius: 4px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--azul), var(--rojo));
+}
+
+.encabezado-seccion .subtitulo {
+    display: block;
+}
+
+.encabezado-seccion p {
+    display: block;
+    color: var(--texto-suave);
+}
+
+/* ---------- Tarjetas de ciudades ---------- */
+
+.grid-ciudades {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 35px;
+}
+
+.tarjeta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: var(--radio);
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+    transition: var(--transicion);
+}
+
+.tarjeta:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.tarjeta-imagen {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s;
+}
+
+.tarjeta:hover .tarjeta-imagen {
+    transform: scale(1.1);
+    filter: brightness(1.08) saturate(1.15);
+}
+
+.tarjeta-contenido {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    background: var(--blanco);
+}
+
+.tarjeta-contenido h3 {
+    font-size: 1.45rem;
+    color: var(--azul-oscuro);
+    margin-bottom: 12px;
+    transition: color 0.3s;
+}
+
+.tarjeta:hover .tarjeta-contenido h3 {
+    color: var(--rojo);
+}
+
+.tarjeta-contenido p {
+    font-size: 0.95rem;
+    color: var(--texto-suave);
+    margin-bottom: 6px;
+}
+
+.tarjeta-contenido strong {
+    color: var(--texto);
+}
+
+.boton-tarjeta {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 18px;
+    font-weight: 600;
+    color: var(--azul);
+    transition: var(--transicion);
+}
+
+.boton-tarjeta:hover {
+    color: var(--rojo);
+    letter-spacing: 1px;
+}
+
+/* Hace que toda la tarjeta sea clicable */
+.boton-tarjeta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+/* Aparición al hacer scroll (activada por JavaScript en base.html) */
+.revelar {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.revelar.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tarjeta.revelar.visible:hover {
+    transform: translateY(-12px);
+}
+
+/* Sin imagen */
+.sin-imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 230px;
+    color: var(--blanco);
+    background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+}
+
+.sin-imagen span {
+    font-size: 3rem;
+}
+
+.mensaje-vacio {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: var(--radio);
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+}
+
+.mensaje-vacio h3 {
+    color: var(--azul-oscuro);
+    margin-bottom: 8px;
+}
+
+/* ---------- Página de detalle ---------- */
+
+.detalle {
+    padding: 130px 0 90px;
+    background:
+        radial-gradient(circle at top right, rgba(220, 38, 38, 0.08), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(30, 58, 138, 0.10), transparent 45%),
+        var(--fondo);
+}
+
+.volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 30px;
+    padding: 10px 22px;
+    font-weight: 600;
+    color: var(--azul);
+    border-radius: 50px;
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+    transition: var(--transicion);
+}
+
+.volver:hover {
+    color: var(--blanco);
+    background: var(--azul);
+    transform: translateX(-6px);
+}
+
+.detalle-contenedor {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    align-items: start;
+    padding: 30px;
+    border-radius: 26px;
+    background: var(--blanco);
+    box-shadow: var(--sombra-fuerte);
+    animation: aparecer-arriba 0.8s ease both;
+}
+
+.detalle-imagen {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    max-height: 560px;
+    object-fit: cover;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.detalle-imagen:hover {
+    transform: scale(1.02) rotate(-0.5deg);
+}
+
+.detalle-info {
+    padding: 10px 0;
+}
+
+.detalle-info h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    color: var(--azul-oscuro);
+    margin-bottom: 25px;
+}
+
+.detalle-info h2 {
+    font-size: 1.3rem;
+    color: var(--azul-oscuro);
+    margin: 30px 0 12px;
+}
+
+.datos-ciudad {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.dato {
+    padding: 20px;
+    border-radius: 14px;
+    border-left: 4px solid var(--rojo);
+    background: linear-gradient(135deg, #f8fafc, #eef2ff);
+    transition: var(--transicion);
+}
+
+.dato:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra);
+}
+
+.dato span {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--texto-suave);
+    margin-bottom: 4px;
+}
+
+.dato strong {
+    font-size: 1.15rem;
+    color: var(--azul-oscuro);
+}
+
+.descripcion {
+    padding: 20px 25px;
+    border-radius: 14px;
+    line-height: 2;
+    color: var(--texto);
+    background: #f8fafc;
+}
+
+/* ---------- Pie de página ---------- */
+
+.footer {
+    padding: 35px 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+    background: var(--azul-oscuro);
+    border-top: 4px solid transparent;
+    border-image: linear-gradient(90deg, var(--azul), var(--blanco), var(--rojo)) 1;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+    .detalle-contenedor {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .detalle-imagen {
+        min-height: 280px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-ciudades {
+        grid-template-columns: 1fr;
+    }
+
+    .datos-ciudad {
+        grid-template-columns: 1fr;
+    }
+
+    .seccion {
+        padding: 70px 0;
+    }
+}
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .hero-contenido > *,
+    .revelar {
+        opacity: 1;
+        transform: none;
+    }
+}

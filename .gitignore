@@ -1,0 +1,14 @@
+# Entorno virtual
+env/
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Secretos
+.env
+
+# Base de datos local
+db.sqlite3

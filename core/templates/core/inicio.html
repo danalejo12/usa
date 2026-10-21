@@ -1,0 +1,88 @@
+
+{% extends 'core/base.html' %}
+{% load static humanize %}
+
+{% block titulo %}Inicio | USA Explorer{% endblock %}
+
+{% block contenido %}
+
+<section class="hero">
+    <div class="contenedor hero-contenido">
+        <span class="etiqueta">DESCUBRE ESTADOS UNIDOS</span>
+
+        <h1>Explora ciudades increíbles</h1>
+
+        <p>
+            Conoce su historia, población y los lugares
+            turísticos más interesantes.
+        </p>
+
+        <a href="#ciudades" class="boton">
+            Explorar ciudades
+        </a>
+    </div>
+</section>
+
+<section id="ciudades" class="seccion">
+    <div class="contenedor">
+
+        <div class="encabezado-seccion">
+            <span class="subtitulo">DESTINOS</span>
+            <h2>Ciudades de Estados Unidos</h2>
+            <p>Encuentra tu próximo destino favorito.</p>
+        </div>
+
+        <div class="grid-ciudades">
+
+            {% for ciudad in ciudades %}
+
+            <article class="tarjeta">
+
+                {% if ciudad.foto %}
+                    <img
+                        src="{{ ciudad.foto.url }}"
+                        alt="Fotografía de {{ ciudad.nombre }}"
+                        class="tarjeta-imagen">
+                {% else %}
+                    <div class="sin-imagen">
+                        <span>🏙️</span>
+                        <p>Imagen no disponible</p>
+                    </div>
+                {% endif %}
+
+                <div class="tarjeta-contenido">
+
+                    <h3>{{ ciudad.nombre }}</h3>
+
+                    <p>
+                        <strong>Fundación:</strong>
+                        {{ ciudad.fecha_fundacion|date:"d/m/Y" }}
+                    </p>
+
+                    <p>
+                        <strong>Población:</strong>
+                        {{ ciudad.poblacion|intcomma }} habitantes
+                    </p>
+
+                    <a href="{% url 'detalle_ciudad' ciudad.pk %}"
+                       class="boton-tarjeta">
+                        Conocer ciudad →
+                    </a>
+
+                </div>
+            </article>
+
+            {% empty %}
+
+                <div class="mensaje-vacio">
+                    <h3>No hay ciudades registradas</h3>
+                    <p>Agrega ciudades desde Django Admin.</p>
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
